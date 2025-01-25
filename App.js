@@ -1,20 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { SafeAreaView, StatusBar } from "react-native";
+import { GameList } from "./src/components/GameList/GameList";
+import { useFetchGames } from "./src/hooks/useFetchGames";
+import { styles } from "./src/components/GameList/styles";
 
 export default function App() {
+  const { games, loading, error } = useFetchGames();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <StatusBar style="light" />
+      <GameList games={games} loading={loading} error={error} />
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
