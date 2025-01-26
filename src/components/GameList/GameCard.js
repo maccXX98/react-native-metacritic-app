@@ -1,6 +1,9 @@
 import React, { useEffect, useRef } from "react";
-import { View, Image, Text, Animated } from "react-native";
-import { styles } from "./styles";
+import { View, Image, Text, Animated, Platform } from "react-native";
+import { styles as mobileStyles } from "./styles.mobile";
+import { styles as webStyles } from "./styles.web";
+
+const styles = Platform.OS === "web" ? webStyles : mobileStyles;
 
 export const GameCard = ({ game }) => (
   <View style={styles.card}>

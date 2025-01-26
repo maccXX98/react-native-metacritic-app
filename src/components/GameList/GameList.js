@@ -1,7 +1,16 @@
 import React from "react";
-import { FlatList, View, Text, ActivityIndicator } from "react-native";
+import {
+  FlatList,
+  View,
+  Text,
+  ActivityIndicator,
+  Platform,
+} from "react-native";
 import { AnimatedGameCard } from "./GameCard";
-import { styles } from "./styles";
+import { styles as mobileStyles } from "./styles.mobile";
+import { styles as webStyles } from "./styles.web";
+
+const styles = Platform.OS === "web" ? webStyles : mobileStyles;
 
 export const GameList = ({ games, loading, error }) => {
   if (loading) return <LoadingIndicator />;
